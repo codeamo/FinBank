@@ -11,14 +11,15 @@
 
 .wrapper {
   display: flex;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height: 100%;
   /* width: 100vw; */
-  padding: 50px 15px;
+  padding: 0px 0px; /*50px 15px;*/
   margin: 0;
   font-family: "source code pro" sans-serif;
   user-select: none;
   background-color: #ddeefc;
-  font-size: 16px;
+  font-size: 14px;
   position: relative;
 }
 
@@ -28,7 +29,6 @@
     flex-direction: column;
   }
 }
-
 
 .card-form {
   max-width: 570px;
@@ -46,9 +46,10 @@
   box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
 }
 
+
 @media screen and (max-width: 576px) {
   .card-form {
-    margin: 0 auto;
+    /* margin: 0 auto; */
   }  
 }
 
@@ -126,13 +127,17 @@ input, select {
 }
 
 .month {
-  margin-right: 20px;
+  margin-right: 15px;
 }
+
+
 
 .group {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
+  width: 92vw;
+  position: relative;
 }
 
 .col_cvv {
@@ -149,7 +154,7 @@ input, select {
 button {
   width: 100%;
   margin-top: 20px;
-  height: 55px;
+  height: 50px;
   background: #2364d2;
   border: none;
   border-radius: 5px;
@@ -167,7 +172,7 @@ select {
   background-position: 90% center;
   background-repeat: no-repeat;
   padding-right: 30px;
-  width: 150px;
+  width: 46%;
 }
 
 

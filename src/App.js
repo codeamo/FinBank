@@ -8,9 +8,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <CreditCardForm /> */}
+      <CreditCardForm />
       {/* <SignUp/> */}
-      <SignIn/>
+      {/* <SignIn/> */}
     </div>
   );
 }

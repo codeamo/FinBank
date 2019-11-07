@@ -5,9 +5,15 @@ import '../../utils'
 
 const CreditCardForm = () => {
   const [inputs, setInputs] = useState({});
+  const [isFocused, setFocused] = useState(false);
 
   const handleInputChange = e => {
     e.persist();
+    if (e.target.name === 'cardNumber' || e.target.name === 'cvv') {
+      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+    } else if (e.target.name === 'cardName') {
+      e.target.value = e.target.value.replace(/[0-9]/g, "");
+    }
     setInputs(inputs => ({...inputs, [e.target.name]: e.target.value}));
   }
 
@@ -21,12 +27,13 @@ const CreditCardForm = () => {
     setInputs('');
   }
 
+
   return (
     <div className="wrapper">
       <form className="card-form" onSubmit={handleSubmit}>
-        <CardItem/>
+        <CardItem isFocused={isFocused} cardInput={inputs}/>
         <label class="labeling">Card Number</label>
-        <input className="cardNumber" type="tel" name="cardNumber" value={inputs.cardNumber} onChange={handleInputChange}></input>
+        <input className="cardNumber" type="tel" maxlength="19" name="cardNumber" value={inputs.cardNumber} onChange={handleInputChange}></input>
         <label class="labeling">Card Name</label>
         <input className="cardName" type="text" name="cardName" value={inputs.cardName} onChange={handleInputChange}></input>
         <div className="row">
@@ -66,7 +73,9 @@ const CreditCardForm = () => {
           </div>  
           <div className="col_cvv">
             <label class="labeling">CVV</label>
-            <input className="cvv" type="text" name="cvv" value={inputs.cvv} onChange={handleInputChange}></input>
+            <input type="password" onFocus={()=>setFocused(true)} 
+            // eslint-disable-next-line
+            onBlur={()=>setFocused(false)} className="cvv" type="text" maxlength="3" name="cvv" value={inputs.cvv} onChange={handleInputChange}></input>
           </div>
         </div>
         <button type="submit">submit</button>
@@ -75,4 +84,5 @@ const CreditCardForm = () => {
   )
 }
 
-export default CreditCardForm; 
+
+export default CreditCardForm;
